@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "travel_informations",
+  "info": {
+    "singularName": "travel-information",
+    "pluralName": "travel-informations",
+    "displayName": "Travel Information"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lat": {
+      "type": "string"
+    },
+    "long": {
+      "type": "string"
+    },
+    "carInfoList": {
+      "type": "richtext"
+    },
+    "descriptionArrival": {
+      "type": "richtext"
+    },
+    "carDirections": {
+      "type": "richtext"
+    },
+    "mapTravelInfo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mapsUrl": {
+      "type": "string"
+    },
+    "trainShuttleInfo": {
+      "type": "richtext"
+    },
+    "shuttleTimes": {
+      "type": "richtext"
+    }
+  }
+}

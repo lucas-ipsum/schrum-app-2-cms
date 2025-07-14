@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "food_and_drinkss",
+  "info": {
+    "singularName": "food-and-drinks",
+    "pluralName": "food-and-drinkss",
+    "displayName": "foodAndDrinks"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "drinksList": {
+      "type": "richtext"
+    },
+    "foodList": {
+      "type": "richtext"
+    },
+    "lehmannsButterbroteInfo": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "packing_lists",
+  "info": {
+    "singularName": "packing-list",
+    "pluralName": "packing-lists",
+    "displayName": "Packing List"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "listContent": {
+      "type": "richtext"
+    }
+  }
+}
