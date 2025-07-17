@@ -17,7 +17,7 @@ services:
       - ./config:/app/config
       - ./src:/app/src
       - ./public/uploads:/app/public/uploads
-      - ./data:/app/data # Assuming SQLite database will be stored in ./data directory
+      - ./data:/app/data # Assuming SQLite database will be stored in ./data director
     ports:
       - "1337:1337"
 
