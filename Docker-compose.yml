@@ -1,4 +1,3 @@
-#Docker-compose.yml
 services:
   strapi:
     build: .
@@ -6,12 +5,8 @@ services:
     restart: unless-stopped
     env_file: ./.env
     environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_HOST: ${DATABASE_HOST}
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_CLIENT: sqlite
+      DATABASE_FILENAME: ${DATABASE_FILENAME}
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
@@ -22,6 +17,7 @@ services:
       - ./config:/app/config
       - ./src:/app/src
       - ./public/uploads:/app/public/uploads
+      - ./data:/app/data # Assuming SQLite database will be stored in ./data directory
     ports:
       - "1337:1337"
 
