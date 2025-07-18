@@ -10,6 +10,7 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      URL: https://strapi-cms.schrum.xyz # Set your domain URL here
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
       APP_KEYS: ${APP_KEYS}
       NODE_ENV: production
