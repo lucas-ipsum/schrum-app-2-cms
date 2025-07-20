@@ -21,15 +21,7 @@ services:
       - ./src:/app/src
       - ./public/uploads:/app/public/uploads
       - ./data:/app/data
-    networks:
-      - "coolify"
+
     labels:
-      "caddy": "strapi-cms.schrum.xyz"
-      "caddy.reverse_proxy": "{{upstreams 1337}}"
-
-    ports:
-      - "1337:1337"
-
-networks:
-  coolify:
-    external: true
+      - "coolify.url=https://strapi-cms.schrum.xyz"
+      - "coolify.enable=true"
