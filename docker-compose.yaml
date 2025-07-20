@@ -5,22 +5,19 @@ services:
     restart: unless-stopped
     env_file: ./.env
     environment:
+      NODE_ENV: production
       DATABASE_CLIENT: sqlite
-      DATABASE_FILENAME: ${DATABASE_FILENAME}
+      DATABASE_FILENAME: /app/data/data.db
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      URL: https://strapi-cms.schrum.xyz # Set your domain URL here
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
       APP_KEYS: ${APP_KEYS}
-      NODE_ENV: production
+      URL: https://strapi-cms.schrum.xyz
+      HOST: 0.0.0.0
+      PORT: 1337
     volumes:
       - ./config:/app/config
       - ./src:/app/src
       - ./public/uploads:/app/public/uploads
-      - ./data:/app/data # Assuming SQLite database will be stored in ./data director
-    ports:
-      - "1337:1337"
-
-volumes:
-  strapi-data:
+      - ./data:/app/data
