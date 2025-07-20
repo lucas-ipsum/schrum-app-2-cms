@@ -25,8 +25,11 @@ services:
       - "coolify"
     labels:
       caddy: strapi-cms.schrum.xyz
+      caddy.reverse_proxy: "{{upstreams 1337}}"
+
     ports:
       - "1337:1337"
-  networks:
-    coolify:
-      external: true
+
+networks:
+  coolify:
+    external: true
