@@ -21,3 +21,6 @@ services:
       - ./src:/app/src
       - ./public/uploads:/app/public/uploads
       - ./data:/app/data
+    labels:
+      - coolify.enable=true
+      - coolify.url=strapi-cms.schrum.xyz
