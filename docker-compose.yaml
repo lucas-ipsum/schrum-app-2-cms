@@ -24,3 +24,8 @@ services:
     labels:
       - "coolify.url=https://strapi-cms.schrum.xyz"
       - "coolify.enable=true"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1337/admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
