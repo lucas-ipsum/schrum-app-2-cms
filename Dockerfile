@@ -1,20 +1,31 @@
-#DockerFile
+# Use official Node.js image
 FROM node:18-alpine3.18
-# Installing libvips-dev for sharp Compatibility
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
 
-WORKDIR /opt/
+# Install Sharp dependencies and other required tools
+RUN apk update && apk add --no-cache \
+    vips-dev build-base gcc autoconf automake zlib-dev \
+    libpng-dev nasm bash git python3 make
+
+# Set working directory
+WORKDIR /app
+
+# Copy only package files first to install dependencies (cache layer)
 COPY package.json package-lock.json ./
-RUN npm install -g node-gyp
-RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install
-ENV PATH=/opt/node_modules/.bin:$PATH
 
-WORKDIR /opt/app
+# Install dependencies
+RUN npm install
+
+# Copy rest of the app
 COPY . .
-RUN chown -R node:node /opt/app
-USER node
-RUN ["npm", "run" , "build"]
+
+# Build the Strapi app
+RUN npm run build
+
+# Set environment variable
+ENV NODE_ENV=production
+
+# Expose port used by Strapi
 EXPOSE 1337
-CMD ["npm","run","develop"]
+
+# Start the Strapi server in production mode
+CMD ["npm", "start"]
