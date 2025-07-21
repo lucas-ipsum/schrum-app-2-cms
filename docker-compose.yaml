@@ -1,6 +1,6 @@
 services:
   strapi:
-    image: strapi/strapi:latest
+    build: .
     restart: unless-stopped
     env_file: .env
     environment:
