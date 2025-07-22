@@ -457,9 +457,45 @@ export interface ApiEventDetailEventDetail extends Struct.SingleTypeSchema {
       'api::event-detail.event-detail'
     > &
       Schema.Attribute.Private;
+    logo_normal: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    logo_small: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    logo_xs: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     startDate: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFinananceInformationFinananceInformation
+  extends Struct.SingleTypeSchema {
+  collectionName: 'finanance_informations';
+  info: {
+    displayName: 'Finanance Information';
+    pluralName: 'finanance-informations';
+    singularName: 'finanance-information';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    infoList: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::finanance-information.finanance-information'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -548,6 +584,35 @@ export interface ApiPackingListPackingList extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSurveyAnswearSurveyAnswear
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'survey_answears';
+  info: {
+    displayName: 'surveyAnswear';
+    pluralName: 'survey-answears';
+    singularName: 'survey-answear';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::survey-answear.survey-answear'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    response: Schema.Attribute.JSON;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1105,9 +1170,11 @@ declare module '@strapi/strapi' {
       'api::announcement.announcement': ApiAnnouncementAnnouncement;
       'api::artist.artist': ApiArtistArtist;
       'api::event-detail.event-detail': ApiEventDetailEventDetail;
+      'api::finanance-information.finanance-information': ApiFinananceInformationFinananceInformation;
       'api::food-and-drinks.food-and-drinks': ApiFoodAndDrinksFoodAndDrinks;
       'api::location.location': ApiLocationLocation;
       'api::packing-list.packing-list': ApiPackingListPackingList;
+      'api::survey-answear.survey-answear': ApiSurveyAnswearSurveyAnswear;
       'api::travel-information.travel-information': ApiTravelInformationTravelInformation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

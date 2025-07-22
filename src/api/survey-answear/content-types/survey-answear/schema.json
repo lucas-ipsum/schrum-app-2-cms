@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "survey_answears",
+  "info": {
+    "singularName": "survey-answear",
+    "pluralName": "survey-answears",
+    "displayName": "surveyAnswear"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "response": {
+      "type": "json"
+    }
+  }
+}
