@@ -19,6 +19,9 @@
     },
     "additionalInformation": {
       "type": "richtext"
+    },
+    "extraField": {
+      "type": "richtext"
     }
   }
 }
