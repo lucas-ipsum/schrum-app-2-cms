@@ -473,35 +473,6 @@ export interface ApiEventDetailEventDetail extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiFinananceInformationFinananceInformation
-  extends Struct.SingleTypeSchema {
-  collectionName: 'finanance_informations';
-  info: {
-    displayName: 'Finanance Information';
-    pluralName: 'finanance-informations';
-    singularName: 'finanance-information';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    infoList: Schema.Attribute.RichText;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::finanance-information.finanance-information'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFoodAndDrinksFoodAndDrinks extends Struct.SingleTypeSchema {
   collectionName: 'food_and_drinkss';
   info: {
@@ -525,6 +496,37 @@ export interface ApiFoodAndDrinksFoodAndDrinks extends Struct.SingleTypeSchema {
       'api::food-and-drinks.food-and-drinks'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGeneralInformationGeneralInformation
+  extends Struct.SingleTypeSchema {
+  collectionName: 'general_informations';
+  info: {
+    displayName: 'General Information';
+    pluralName: 'general-informations';
+    singularName: 'general-information';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    additionalInformation: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hygieneInformation: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::general-information.general-information'
+    > &
+      Schema.Attribute.Private;
+    paymentInformations: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -616,6 +618,11 @@ export interface ApiSurveyAnswearSurveyAnswear
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    user_id: Schema.Attribute.Integer;
   };
 }
 
@@ -1113,7 +1120,6 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -1145,6 +1151,10 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    survey_answear: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::survey-answear.survey-answear'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1170,8 +1180,8 @@ declare module '@strapi/strapi' {
       'api::announcement.announcement': ApiAnnouncementAnnouncement;
       'api::artist.artist': ApiArtistArtist;
       'api::event-detail.event-detail': ApiEventDetailEventDetail;
-      'api::finanance-information.finanance-information': ApiFinananceInformationFinananceInformation;
       'api::food-and-drinks.food-and-drinks': ApiFoodAndDrinksFoodAndDrinks;
+      'api::general-information.general-information': ApiGeneralInformationGeneralInformation;
       'api::location.location': ApiLocationLocation;
       'api::packing-list.packing-list': ApiPackingListPackingList;
       'api::survey-answear.survey-answear': ApiSurveyAnswearSurveyAnswear;
