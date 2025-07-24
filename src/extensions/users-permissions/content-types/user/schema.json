@@ -71,6 +71,9 @@
       "relation": "oneToOne",
       "target": "api::survey-answear.survey-answear",
       "inversedBy": "user"
+    },
+    "isAdmin": {
+      "type": "boolean"
     }
   }
 }
