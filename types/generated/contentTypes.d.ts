@@ -429,7 +429,10 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     musicExample: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     performanceEvent: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    performanceEventEndTime: Schema.Attribute.DateTime &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    social: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

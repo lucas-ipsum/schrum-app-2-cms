@@ -28,6 +28,13 @@
     },
     "musicExample": {
       "type": "string"
+    },
+    "social": {
+      "type": "string"
+    },
+    "performanceEventEndTime": {
+      "type": "datetime",
+      "required": true
     }
   }
 }
