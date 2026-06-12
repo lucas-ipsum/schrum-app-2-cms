@@ -415,6 +415,7 @@ export interface ApiAppSettingAppSetting extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    artistsDetailMode: Schema.Attribute.Boolean & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
